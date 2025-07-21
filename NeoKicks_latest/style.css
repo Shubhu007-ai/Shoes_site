@@ -1,0 +1,721 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('images/transparent-bg.png');
+  background-repeat: repeat;
+  background-size: auto;
+  background-attachment: fixed;
+  background-color: rgba(248, 249, 250, 0.8);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  padding-top: 80px;
+}
+
+.logo-image {
+  width: 5em;
+  height: auto;
+  margin-right: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4af18d;
+  padding: 15px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: -webkit-fill-available;  
+  z-index: 1000;
+}
+
+.nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-titles {
+  text-decoration: none;
+  color: #202020;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+.nav-titles:hover {
+  color: #007bff;
+}
+
+.search-bar {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  width: 180px;
+}
+
+/* NEW: Cart Icon Styles */
+.cart-icon-container {
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px; /* Space from search bar */
+}
+
+.cart-icon {
+    font-size: 1.5em;
+    color: #202020;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #e74c3c; /* Red dot */
+    color: white;
+    font-size: 0.7em;
+    border-radius: 50%;
+    padding: 2px 6px;
+    min-width: 15px;
+    text-align: center;
+}
+
+/* NEW: Mini-Cart Preview */
+.mini-cart-preview {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 35px; /* Below the cart icon */
+    right: 0;
+    width: 280px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 15px;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.mini-cart-preview.active {
+    display: block; /* Show when active */
+}
+
+.mini-cart-preview h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    color: #333;
+}
+
+.mini-cart-preview ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px; /* Scrollable if many items */
+    overflow-y: auto;
+}
+
+.mini-cart-preview li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.mini-cart-preview li:last-child {
+    border-bottom: none;
+}
+
+.mini-cart-preview .item-name {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.mini-cart-preview .item-price {
+    white-space: nowrap;
+}
+
+.mini-cart-total {
+    font-weight: bold;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    text-align: right;
+    color: #333;
+}
+
+.view-cart-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.view-cart-btn:hover {
+    background-color: #0056b3;
+}
+
+.empty-cart-message {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    padding: 20px 0;
+}
+
+
+/* Mobile Menu Toggle (hidden on desktop) */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #202020;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+/* Mobile Navigation Menu */
+.nav-mobile {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(74, 241, 141, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    text-align: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-out;
+    z-index: 999;
+    overflow-y: auto;
+    max-height: calc(100vh - 80px);
+}
+
+.nav-mobile.active {
+    transform: translateY(0);
+}
+
+.nav-mobile .nav-titles {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(32, 32, 32, 0.1);
+    width: 100%;
+    display: block;
+}
+
+.nav-mobile .nav-titles:last-child {
+    border-bottom: none;
+}
+
+.search-bar-mobile {
+    padding: 10px 15px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/* NEW: Mobile Cart Icon Container */
+.cart-icon-container-mobile {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(32, 32, 32, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #202020;
+}
+
+
+/* HERO SECTION */
+.hero-section {
+  padding: 100px 20px;
+  text-align: center;
+  background-image: url('images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fd219a;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.hero-section h2 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  color: #e4b21c;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* SHOE SECTIONS */
+.shoe-section {
+  padding: 50px 20px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: linear-gradient(135deg, #e2e8f0, #ffffff, #e2e8f0);
+  border-bottom: 1px solid #dcdcdc;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+}
+
+.shoe-section h2,
+.shoe-carousel {
+  position: relative;
+  z-index: 2;
+}
+
+.shoe-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #068080;
+  font-size: xx-large;
+}
+
+/* CARD STYLES */
+.card {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.card .large-height-image {
+    max-height: 250px;
+    object-fit: cover;
+}
+
+/* NEW: Card Actions */
+.card-actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 15px;
+    gap: 10px; /* Space between buttons */
+}
+
+.buy-btn, .quick-view-btn, .add-to-cart-modal-btn { /* Apply same base style to modal add to cart */
+  background-color: #3ddc97;
+  color: #fff;
+  padding: 10px 15px; /* Slightly reduced padding to fit two buttons */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 0.9em; /* Slightly smaller font for buttons */
+  flex-grow: 1; /* Make buttons grow to fill space */
+  text-align: center;
+  white-space: nowrap; /* Prevent text wrap */
+}
+
+.buy-btn:hover, .quick-view-btn:hover, .add-to-cart-modal-btn:hover {
+  background-color: #339e70;
+}
+
+.quick-view-btn {
+    background-color: #007bff; /* Different color for quick view */
+}
+
+.quick-view-btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* INFO SECTION */
+.info-section {
+  padding: 50px 20px;
+  background-color: #dfe7d4;
+  text-align: center;
+}
+
+.info-section h2 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 2em;
+}
+
+.info-section p {
+  font-size: 1.1em;
+  color: #555;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.info-section img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* FOOTER */
+.footer {
+  background-color: #5e5d5d;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+  color: #d3cfcf;
+}
+
+/* NEW: Quick View Modal Styles */
+.quick-view-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stays in place */
+    z-index: 1002; /* Higher than navbar and mobile menu */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if content is too long */
+    background-color: rgba(0,0,0,0.6); /* Black background with transparency */
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.quick-view-modal.active {
+    display: flex; /* Show when active */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 800px; /* Max width for modal */
+    position: relative;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; 
+    animation: fadeIn 0.3s ease-out;
+     max-height: calc(100vh - 60px); 
+    overflow-y: auto;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal-btn {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-product-details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.modal-product-image {
+  flex:0 0 auto;
+  width: 100%;
+   min-width: 250px;
+    max-width: 400px;
+    height: auto;
+    max-height: 400px;
+    border-radius: 8px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.modal-text-content {
+    flex:1 1 300px; /* Take remaining space */
+    min-width: 250px; /* Minimum width for text content */
+}
+
+.modal-text-content h3 {
+    font-size: 2em;
+    margin-top: 0;
+    color: #333;
+}
+
+.modal-product-price {
+    font-size: 1.5em;
+    color: #e74c3c; /* A striking color for price */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.modal-product-description {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* NEW: Scroll to Top Button */
+.scroll-to-top-btn {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Make it round */
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 50px; /* Center icon vertically */
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    z-index: 900; /* Below navbars/modals but above content */
+}
+
+.scroll-to-top-btn:hover {
+    background-color: #0056b3;
+}
+
+/* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+
+/* Laptops (larger screens, default styles apply) */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  .nav-icons {
+    gap: 15px;
+  }
+  .search-bar {
+    width: 150px;
+  }
+  .cart-icon-container {
+      margin-left: 10px;
+  }
+  .hero-section {
+    margin-top: 50px;
+  }
+  .hero-section h2 {
+    font-size: 2.8em;
+  }
+  .shoe-section h2 {
+    font-size: 2em;
+  }
+  .card img {
+    max-height: 180px;
+  }
+  /* Modal adjustments for smaller laptops */
+  .modal-content {
+      max-width: 700px;
+      gap: 20px;
+      max-height: calc(100vh - 40px);
+  }
+  .modal-product-image {
+      max-width: 300px;
+      max-height: 350px;
+      min-width: 200px;
+  }
+}
+
+/* Phones (max-width 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 15px 20px;
+    justify-content: space-between;
+  }
+
+  .hero-section {
+      margin-top: 30px;
+      padding: 60px 20px;
+      min-height: 300px;
+  }
+
+  /* Hide desktop nav elements */
+  .nav-desktop {
+    display: none;
+  }
+
+  /* Show mobile toggle */
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  /* Mobile Navigation Menu */
+  .nav-mobile {
+    display: flex; /* Show the mobile menu container as a flex column by default in mobile layout */
+    top: 80px;
+  }
+
+  /* Adjust mobile cart container alignment within mobile nav */
+  .cart-icon-container-mobile {
+      justify-content: flex-start; /* Align left */
+      padding-left: 20px; /* Indent */
+  }
+
+  .hero-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 15px;
+  }
+
+  .hero-section p {
+    font-size: 1em;
+  }
+
+  .shoe-section {
+    padding: 30px 10px;
+  }
+
+  .shoe-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    padding: 15px;
+    margin: 5px;
+  }
+
+  .card img {
+    max-height: 150px;
+  }
+
+  /* Modal responsive on mobile */
+  .modal-content {
+      flex-direction: column; /* Stack image and text */
+      gap: 15px;
+      padding: 20px;
+      width: 95%; /* Wider modal on mobile */
+      max-width: 400px; 
+      max-height: calc(100vh - 40px);
+  }
+  .modal-product-image {
+      max-width: 100%; 
+      max-height: 250px;
+      width: 100%;
+      /* object-fit: contain; */
+  }
+  .modal-text-content {
+      min-width: unset;
+      flex: 1 1 auto;
+  }
+  .modal-text-content h3 {
+      font-size: 1.5em;
+  }
+  .modal-product-price {
+      font-size: 1.2em;
+  }
+}
+
+/* Small Phones (max-width 480px) */
+@media (max-width: 480px) {
+  .logo-image {
+    width: 4em;
+  }
+  .hero-section h2 {
+    font-size: 1.8em;
+  }
+  .hero-section p {
+    font-size: 0.9em;
+  }
+  .shoe-section h2 {
+    font-size: 1.5em;
+  }
+  .card img {
+    max-height: 120px;
+  }
+  .buy-btn, .quick-view-btn, .add-to-cart-modal-btn {
+    padding: 8px 12px;
+    font-size: 0.8em;
+  }
+  .modal-content {
+      padding: 15px;
+      max-height: calc(100vh - 30px);
+  }
+  .close-modal-btn {
+      font-size: 24px;
+      top: 5px;
+      right: 15px;
+  }
+  .modal-product-image {
+      max-height: 200px;
+  }
+}
+
+/* Very Small Phones (max-width 360px) */
+@media (max-width: 360px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+  .hero-section {
+      margin-top: 80px; /* Adjust as needed */
+  }
+  .hero-section h2 {
+    font-size: 1.5em;
+  }
+  .shoe-section h2 {
+    font-size: 1.3em;
+  }
+}

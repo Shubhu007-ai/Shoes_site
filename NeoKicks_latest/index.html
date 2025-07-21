@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeoKicks - Latest Footwear</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <header class="navbar">
+    <div>
+      <img src="images/neokicklogo.png" alt="logo of site" class="logo-image" />
+    </div>
+    <nav class="nav-desktop">
+      <div class="nav-icons">
+        <a href="#home" class="nav-titles">Home</a>
+        <a href="#about" class="nav-titles">About</a>
+        <a href="#contact" class="nav-titles">Contact Us</a>
+        <a href="#faq-section" class="nav-titles">FAQ</a>
+        <a href="#blog-section" class="nav-titles">Blog</a>
+      </div>
+      <input type="text" placeholder="Search shoes..." class="search-bar" />
+      <div class="cart-icon-container">
+        <i class="fas fa-shopping-cart cart-icon" id="desktop-cart-icon"></i>
+        <span class="cart-count" id="desktop-cart-count">0</span>
+        <div class="mini-cart-preview" id="desktop-mini-cart-preview">
+          <h4>Your Cart</h4>
+          <ul id="desktop-cart-items">
+            <li class="empty-cart-message">Cart is empty</li>
+          </ul>
+          <div class="mini-cart-total">Total: $<span id="desktop-cart-total">0.00</span></div>
+          <button class="view-cart-btn">View Cart</button>
+        </div>
+      </div>
+    </nav>
+
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <nav class="nav-mobile" id="mobile-nav-links">
+    <a href="#home" class="nav-titles">Home</a>
+    <a href="#about" class="nav-titles">About</a>
+    <a href="#contact" class="nav-titles">Contact Us</a>
+    <a href="#faq-section" class="nav-titles">FAQ</a>
+    <a href="#blog-section" class="nav-titles">Blog</a>
+    <input type="text" placeholder="Search shoes..." class="search-bar-mobile" />
+    <div class="cart-icon-container-mobile">
+        <i class="fas fa-shopping-cart cart-icon" id="mobile-cart-icon"></i>
+        <span class="cart-count" id="mobile-cart-count">0</span>
+    </div>
+  </nav>
+
+  <section id="home" class="hero-section">
+    <h2>Step into Style with NeoKicks</h2>
+    <p>Latest sneakers, casual, and running shoes just for you.</p>
+  </section>
+
+  <section class="shoe-section sneakers">
+    <h2>Sneakers</h2>
+    <div class="shoe-carousel">
+      <div class="card" data-product-id="s1" data-name="AirFlex Sneaker" data-price="79.99" data-image="images/sneaker5.jpg">
+        <img src="images/sneaker5.jpg" alt="Sneaker 1" class="large-height-image">
+        <h3>AirFlex Sneaker</h3>
+        <p>$79.99</p>
+        <div class="card-actions">
+          <button class="buy-btn">Add to Cart</button>
+          <button class="quick-view-btn">Quick View</button>
+        </div>
+      </div>
+      <div class="card" data-product-id="s2" data-name="Urban Runner" data-price="89.99" data-image="images/sneaker2.jpg">
+        <img src="images/sneaker2.jpg" alt="Sneaker 2">
+        <h3>Urban Runner</h3>
+        <p>$89.99</p>
+        <div class="card-actions">
+          <button class="buy-btn">Add to Cart</button>
+          <button class="quick-view-btn">Quick View</button>
+        </div>
+      </div>
+      <div class="card" data-product-id="s3" data-name="Neo HighTop" data-price="95.00" data-image="images/sneaker3.jpg">
+        <img src="images/sneaker3.jpg" alt="Sneaker 3">
+        <h3>Neo HighTop</h3>
+        <p>$95.00</p>
+        <div class="card-actions">
+          <button class="buy-btn">Add to Cart</button>
+          <button class="quick-view-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shoe-section casual">
+    <h2>Casual Shoes</h2>
+    <div class="shoe-carousel">
+      <div class="card" data-product-id="c1" data-name="Daily Comfort" data-price="49.99" data-image="images/casual1.jpg">
+        <img src="images/casual1.jpg" alt="Casual 1" class="large-height-image">
+        <h3>Daily Comfort</h3>
+        <p>$49.99</p>
+        <div class="card-actions">
+          <button class="buy-btn">Add to Cart</button>
+          <button class="quick-view-btn">Quick View</button>
+        </div>
+      </div>
+      <div class="card" data-product-id="c2" data-name="Neo SlipOn" data-price="55.00" data-image="images/casual2.jpg">
+        <img src="images/casual2.jpg" alt="Casual 2">
+        <h3>Neo SlipOn</h3>
+        <p>$55.00</p>
+        <div class="card-actions">
+          <button class="buy-btn">Add to Cart</button>
+          <button class="quick-view-btn">Quick View</button>
+        </div>
+      </div>
+      <div class="card" data-product-id="c3" data-name="Urban Walk" data-price="59.99" data-image="images/casual3.jpg">
+        <img src="images/casual3.jpg" alt="Casual 3">
+        <h3>Urban Walk</h3>
+        <p>$59.99</p>
+        <div class="card-actions">
+          <button class="buy-btn">Add to Cart</button>
+          <button class="quick-view-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shoe-section running">
+    <h2>Running Shoes</h2>
+    <div class="shoe-carousel">
+      <div class="card" data-product-id="r1" data-name="SpeedRunner" data-price="69.99" data-image="images/running1.jpg">
+        <img src="images/running1.jpg" alt="Running 1">
+        <h3>SpeedRunner</h3>
+        <p>$69.99</p>
+        <div class="card-actions">
+          <button class="buy-btn">Add to Cart</button>
+          <button class="quick-view-btn">Quick View</button>
+        </div>
+      </div>
+      <div class="card" data-product-id="r2" data-name="EnduroPro" data-price="75.00" data-image="images/running2.jpg">
+        <img src="images/running2.jpg" alt="Running 2">
+        <h3>EnduroPro</h3>
+        <p>$75.00</p>
+        <div class="card-actions">
+          <button class="buy-btn">Add to Cart</button>
+          <button class="quick-view-btn">Quick View</button>
+        </div>
+      </div>
+      <div class="card" data-product-id="r3" data-name="Neo Sprint" data-price="82.50" data-image="images/running3.jpeg">
+        <img src="images/running3.jpeg" alt="Running 3">
+        <h3>Neo Sprint</h3>
+        <p>$82.50</p>
+        <div class="card-actions">
+          <button class="buy-btn">Add to Cart</button>
+          <button class="quick-view-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="info-section">
+    <h2>About NeoKicks</h2>
+    <p>At NeoKicks, we blend fashion and comfort with the latest trends in footwear for all lifestyles.</p>
+  </section>
+
+  <section id="contact" class="info-section">
+    <h2>Contact Us</h2>
+    <p>Email: support@neokicks.com</p>
+    <p>Phone: +91-1234567890</p>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 NeoKicks. All rights reserved.</p>
+  </footer>
+
+  <div class="quick-view-modal" id="quick-view-modal">
+    <div class="modal-content">
+      <span class="close-modal-btn" id="close-modal-btn">&times;</span>
+      <div class="modal-product-details">
+        <img src="" alt="Product Image" id="modal-product-image">
+        <div class="modal-text-content">
+          <h3 id="modal-product-name"></h3>
+          <p class="modal-product-price" id="modal-product-price"></p>
+          <p class="modal-product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <button class="buy-btn add-to-cart-modal-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top-btn" id="scroll-to-top-btn" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
