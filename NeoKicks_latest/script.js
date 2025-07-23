@@ -81,7 +81,7 @@ $(document).ready(function() {
       const mobileCartCount = document.getElementById('mobile-cart-count');
       const desktopCartItemsList = document.getElementById('desktop-cart-items');
       const desktopCartTotalSpan = document.getElementById('desktop-cart-total');
-      const emptyCartMessage = desktopCartItemsList.querySelector('.empty-cart-message');
+      // const emptyCartMessage = desktopCartItemsList.querySelector('.empty-cart-message'); // This line is not needed here after refactoring
 
       const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
       const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2);
@@ -128,25 +128,21 @@ $(document).ready(function() {
   // Show "Added to Cart!" feedback
   function showAddToCartFeedback(productName) {
       const feedbackMessage = `${productName} added to cart!`;
-      // You could implement a small toast/notification here if desired
-      console.log(feedbackMessage); // For now, log to console
+      console.log(feedbackMessage);
   }
 
   // Event listener for "Add to Cart" buttons
   document.querySelectorAll('.buy-btn, .add-to-cart-modal-btn').forEach(button => {
     button.addEventListener('click', function() {
-      // Determine if click is from card or modal
       let productData;
       if (this.classList.contains('add-to-cart-modal-btn')) {
-          // Get data from modal content
           productData = {
-              id: this.dataset.productId, // This needs to be set when modal opens
+              id: this.dataset.productId,
               name: document.getElementById('modal-product-name').textContent,
               price: parseFloat(document.getElementById('modal-product-price').textContent.replace('$', '')),
               image: document.getElementById('modal-product-image').src
           };
       } else {
-          // Get data from card
           const card = this.closest('.card');
           productData = {
               id: card.dataset.productId,
@@ -158,7 +154,7 @@ $(document).ready(function() {
       addToCart(productData);
 
       const originalText = this.textContent;
-      this.textContent = 'Added!'; // Shorter text for quick feedback
+      this.textContent = 'Added!';
       this.style.backgroundColor = '#28a745';
       this.disabled = true;
 
@@ -168,7 +164,6 @@ $(document).ready(function() {
         this.disabled = false;
       }, 1500);
 
-      // Close modal if adding from modal
       if (this.classList.contains('add-to-cart-modal-btn')) {
           closeQuickViewModal();
       }
@@ -181,12 +176,11 @@ $(document).ready(function() {
 
   if (desktopCartIconContainer && desktopMiniCartPreview) {
       desktopCartIconContainer.addEventListener('click', function(event) {
-          event.stopPropagation(); // Prevent document click from closing immediately
+          event.stopPropagation();
           desktopMiniCartPreview.classList.toggle('active');
-          updateCartDisplay(); // Update display every time it's opened
+          updateCartDisplay();
       });
 
-      // Close mini-cart if clicked outside
       document.addEventListener('click', function(event) {
           if (!desktopMiniCartPreview.contains(event.target) && !desktopCartIconContainer.contains(event.target)) {
               desktopMiniCartPreview.classList.remove('active');
@@ -200,7 +194,7 @@ $(document).ready(function() {
   const modalProductImage = document.getElementById('modal-product-image');
   const modalProductName = document.getElementById('modal-product-name');
   const modalProductPrice = document.getElementById('modal-product-price');
-  const addToCartModalBtn = document.querySelector('.add-to-cart-modal-btn'); // Get the button within the modal
+  const addToCartModalBtn = document.querySelector('.add-to-cart-modal-btn');
 
   document.querySelectorAll('.quick-view-btn').forEach(button => {
       button.addEventListener('click', function() {
@@ -214,19 +208,17 @@ $(document).ready(function() {
           modalProductImage.alt = productName;
           modalProductName.textContent = productName;
           modalProductPrice.textContent = `$${parseFloat(productPrice).toFixed(2)}`;
-          addToCartModalBtn.dataset.productId = productId; // Set product ID for modal's Add to Cart button
+          addToCartModalBtn.dataset.productId = productId;
 
-          quickViewModal.classList.add('active'); // Show the modal
-          document.body.style.overflow = 'hidden'; // Prevent scrolling background
+          quickViewModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
       });
   });
 
-  // Close modal when X is clicked
   if (closeModalBtn) {
       closeModalBtn.addEventListener('click', closeQuickViewModal);
   }
 
-  // Close modal when clicking outside of the modal content
   if (quickViewModal) {
       quickViewModal.addEventListener('click', function(event) {
           if (event.target === quickViewModal) {
@@ -235,7 +227,6 @@ $(document).ready(function() {
       });
   }
 
-  // Close modal with Escape key
   document.addEventListener('keydown', function(event) {
       if (event.key === 'Escape' && quickViewModal.classList.contains('active')) {
           closeQuickViewModal();
@@ -244,27 +235,25 @@ $(document).ready(function() {
 
   function closeQuickViewModal() {
       quickViewModal.classList.remove('active');
-      document.body.style.overflow = ''; // Restore scrolling
+      document.body.style.overflow = '';
   }
 
   // --- Scroll to Top Button Functionality ---
   const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
 
   if (scrollToTopBtn) {
-      // Show/hide button based on scroll position
       window.addEventListener('scroll', function() {
-          if (window.scrollY > 300) { // Show after scrolling 300px
+          if (window.scrollY > 300) {
               scrollToTopBtn.style.display = 'block';
           } else {
               scrollToTopBtn.style.display = 'none';
           }
       });
 
-      // Scroll to top when button is clicked
       scrollToTopBtn.addEventListener('click', function() {
           window.scrollTo({
               top: 0,
-              behavior: 'smooth' // Smooth scroll
+              behavior: 'smooth'
           });
       });
   }
