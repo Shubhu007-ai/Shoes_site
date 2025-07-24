@@ -28,7 +28,7 @@ body {
   left: 0;
   width: -webkit-fill-available;  
   z-index: 1000;
-background: linear-gradient(to right, #98fb98, #e6e6fa);
+background: #6da9ef;
 }
 
 .nav-desktop {
@@ -47,6 +47,7 @@ background: linear-gradient(to right, #98fb98, #e6e6fa);
   color: #202020;
   transition: color 0.3s;
   font-weight: bold;
+  font-size:1.1em;
 }
 
 .nav-titles:hover {
